@@ -2,7 +2,7 @@
 from random import randint as rn
 
 
-def attack(char_name, char_class):
+def attack(char_name: str, char_class: str) -> str:
     """Функия генерирует кол-во очков атаки."""
     if char_class == 'warrior':
         return f'{char_name} нанёс урон противнику равный {5 + rn(3,5)}'
@@ -13,7 +13,7 @@ def attack(char_name, char_class):
     return f'{char_name} нанёс урон противнику равный 5'
 
 
-def defence(char_name, char_class):
+def defence(char_name: str, char_class: str) -> str:
     """Функия генерирует кол-во очков защиты."""
     if char_class == 'warrior':
         return f'{char_name} блокировал {10 + rn(5, 10)} урона'
@@ -24,7 +24,7 @@ def defence(char_name, char_class):
     return f'{char_name} блокировал 10 урона'
 
 
-def special(char_name, char_class):
+def special(char_name: str, char_class: str) -> str:
     """Функия возвращает сообщение приминения спецумения."""
     if char_class == 'warrior':
         return f'{char_name}применил специальное умение «Выносливость{80+25}»'
@@ -35,7 +35,7 @@ def special(char_name, char_class):
     return f'{char_name} не применил специальное умение'
 
 
-def start_training(char_name, char_class):
+def start_training(char_name: str, char_class: str) -> str:
     """Функия запускает цикл тренировки."""
     if char_class == 'warrior':
         print(f'{char_name}, ты Воитель — отличный боец ближнего боя.')
@@ -48,7 +48,7 @@ def start_training(char_name, char_class):
           'чтобы блокировать атаку противника или '
           'special — чтобы использовать свою суперсилу.')
     print('Если не хочешь тренироваться, введи команду skip.')
-    cmd = ''
+    cmd: str = ''
     while cmd != 'skip':
         cmd = input('Введи команду: ')
         if cmd == 'attack':
@@ -60,10 +60,10 @@ def start_training(char_name, char_class):
     return 'Тренировка окончена.'
 
 
-def choice_char_class():
+def choice_char_class() -> str:
     """Функия вибирает класс персонажа."""
-    approve_choice = None
-    char_class = None
+    approve_choice: str = ''
+    char_class: str = ''
     while approve_choice != 'y':
         char_class = input('Введи название персонажа, '
                            'за которого хочешь играть:'
@@ -87,12 +87,12 @@ def main():
     """Функция запускает игру."""
     print('Приветствую тебя, искатель приключений!')
     print('Прежде чем начать игру...')
-    char_name = input('...назови себя: ')
+    char_name: str = input('...назови себя: ')
     print(f'Здравствуй, {char_name}! '
           'Сейчас твоя выносливость — 80, атака — 5 и защита — 10.')
     print('Ты можешь выбрать один из трёх путей силы:')
     print('Воитель, Маг, Лекарь')
-    char_class = choice_char_class()
+    char_class: str = choice_char_class()
     print(start_training(char_name, char_class))
 
 
